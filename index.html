@@ -7,11 +7,32 @@
 <body>
 おーぷぬの色確認用。<br>
 PC板TOPとスマホ板TOPとスレの色を確認できる。<br>
-各項目の一番上の色をカラーパレットで決定して適用を押せばおｋ。<br>
-一括で変更できないから、めんどいけど3個個別に設定してね。<br>
-あと、テキストボックスにカラーコード入力させるのもよくわからんかったから未実装（）<br>
+<br>
+カラーコード入力版。<br>
+一応パレットも置いておく。<br>
+<br>
+
+色:<span class="bgc-output">#FFFFFF</span>　<input type="color" id="bgcname" list="" value="#FFFFFF"><br>
 
 <br>
+#FFFFFF 白 (しろ)<br>
+#C0C0C0 銀色 (ぎんいろ)<br>
+#808080 灰色 (はいいろ)<br>
+#000000 黒 (くろ)<br>
+#FF0000 赤 (あか)<br>
+#800000 栗色 (くりいろ)<br>
+#FFFF00 黄色 (きいろ)<br>
+#808000 オリーブ色 (おりーぶいろ)<br>
+#00FF00 ライム (らいむ)<br>
+#008000 緑 (みどり)<br>
+#00FFFF アクア (あくあ)<br>
+#008080 ティール (てぃーる)<br>
+#0000FF 青 (あお)<br>
+#000080 ネイビー (ねいびー)<br>
+#FF00FF フクシャ (ふくしゃ)<br>
+#800080 紫 (むらさき)<br>
+<br>
+
 
 <hr>
 <h1>PC板TOP</h1>
@@ -34,5 +55,14 @@ PC板TOPとスマホ板TOPとスレの色を確認できる。<br>
 <iframe src="sure.html" width="100%" height="80%" ></iframe>
 
 </body>
+<script>
+ window.onload = () => {
+    let bgcname = document.getElementById("bgcname");
+    let objbgc = document.getElementsByClassName("bgc-output")[0];
+    bgcname.addEventListener("change", (event) => {    
+      objbgc.textContent = event.target.value;
+    });
+  }
 
+</script>
 </html>

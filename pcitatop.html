@@ -1,18 +1,19 @@
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
 <div class="setting">
-背景色:<span class="bgc-output">#FFFFFF</span>　<input type="color" id="bgcname" list="" value="#FFFFFF"><br>
-スレッド背景色:<span class="surebgc-output">#EFEFEF</span>　<input type="color" id="surebgcname" list="" value="#EFEFEF"><br>
-板トップ背景色(PC):<span class="itatopbgc-output">#CCFFCC</span>　<input type="color" id="itatopbgcname" list="" value="#CCFFCC"><br>
-板タイトル色:<span class="itatitle-output">#000000</span>　<input type="color" id="itatitlename" list="" value="#000000"><br>
-文字色:<span class="moji-output">#000000</span>　<input type="color" id="mojiname" list="" value="#000000"><br>
-スレタイ色:<span class="suretai-output">#FF0000</span>　<input type="color" id="suretainame" list="" value="#FF0000"><br>
-名前の色:<span class="namae-output">#228811</span>　<input type="color" id="namaename" list="" value="#228811"><br>
-リンク色:<span class="link-output">#0000FF</span>　<input type="color" id="linkname" list="" value="#0000FF"><br>
-リンク色(タップ時):<span class="linktap-output">#FF0000</span>　<input type="color" id="linktapname" list="" value="#FF0000"><br>
-リンク色(訪問済):<span class="linkdone-output">#660099</span>　<input type="color" id="linkdonename" list="" value="#660099"><br>
+<div class="cbgc">背景色:</div><input type="text" id="bgcname"><br><br>
+<div class="csurebgc">スレッド背景色:</div><input type="text" id="surebgcname"><br><br>
+<div class="citatopbgc">板トップ背景色(PC):</div><input type="text" id="itatopbgcname"><br><br>
+<div class="citatitle">板タイトル色:</div><input type="text" id="itatitlename"><br><br>
+<div class="cmoji">文字色:</div><input type="text" id="mojiname"><br><br>
+<div class="csuretai">スレタイ色:</div><input type="text" id="suretainame"><br><br>
+<div class="cnamae">名前の色:</div><input type="text" id="namaename"><br><br>
+<div class="clink">リンク色:</div><input type="text" id="linkname"><br><br>
+<div class="clinktap">リンク色(タップ時):</div><input type="text" id="linktapname"><br><br>
+<div class="clinkdone">リンク色(訪問済):</div><input type="text" id="linkdonename"><br><br>
+<div class="cbanner">バナーのURL:デフォURL:https://image.open2ch.net/image/banner.png</div><input type="text" id="bannername"><br>
 <br>
-<input type="button" value="適用" onclick="change()"></a>
+<input type="button" value="適用" onclick="change()"></a><br>
 <br>
 
 <hr>
@@ -20,7 +21,8 @@
 </div>
 <body class="sbody" >
 <div align="center">
-<img height="72" src="https://image.open2ch.net/image/banner.png"></a>
+
+<img height="72" id="bn" src="https://image.open2ch.net/image/banner.png"><br>デフォURL:https://image.open2ch.net/image/banner.png</a>
 </div>
 <table class="itatophaikei" border="1" cellspacing="7" cellpadding="3" width="95%" align="center">
 <tbody><tr><td align="center">
@@ -260,7 +262,7 @@ background:#fff;border:1px solid #ddd;border-radius:5px;padding-left:5px;padding
 <table style="margin-top:5px" border="0" cellspacing="7" cellpadding="3" width="95%" bgcolor="#CCFFCC" align="center">
 <tbody><tr><td id="topThreads">
 <div style="margin-bottom:5px">
-<div style="margin:3px;padding:10px;background:#aaddaa;font-size:10pt;border-radius:3px;display:inline-block">
+<div style="margin:3px;padding:10px;font-size:10pt;border-radius:3px;display:inline-block">
 <label><span class="sort" style="background:#eee"><input name="sort" value="default" type="radio">旧一覧</span></label>
 &nbsp;
 <label><span class="sort"><input name="sort" value="ninzu" type="radio">人数</span></label>
@@ -294,7 +296,7 @@ background:#fff;border:1px solid #ddd;border-radius:5px;padding-left:5px;padding
 <a href=""#" style="pointer-events:none" bbskey="h1695215790" class="ignore_headline"><font color="red" class="batu">×</font></a>
 <a href=""#" style="pointer-events:none">■</a><a rel="nofollow" href=""#" style="pointer-events:none">▲</a><a href=""#" style="pointer-events:none">▼</a></div>
 <div class="visit">LINK後確認用</div><br><br>
-<b>【1:2】<a class="t" href=""#" style="pointer-events:none" style="text-decoration:none;"><font size="5" class="subject"><t>COLOR＿TESTER</t></font></a></b>
+<b>【1:2】<a class="t" href=""#" style="pointer-events:none" style="text-decoration:none;"><font size="5" class="subject"><t style="text-decoration:none;">COLOR＿TESTER</t></font></a></b>
 <div>
 <dt><a val="1" k="1695215790" class="num" style="cursor: pointer;">1</a>：<font class="name" color="#228811"><b>名無しさん</b></font>：23/09/20(水) 22:16:30 ID:<a class="id" ><font color="#000000">KR01</font></a><font size="2"><font color="red">主</font></font></dt>
 <dd>カラーテスト<br><br><br><br>
@@ -680,26 +682,40 @@ nr{margin-right:2px;font-size:8pt;background:red;color:white;border-radius:3px;p
 /*板の背景色*/
 .sbody{
 	background-color:#FFFFFF;
-	color:#000000;
+}
+.cbgc{
+	color:#FFFFFF;
 }
 
 /*スレッド背景色*/
 .threads{
 	background-color: #EFEFEF;
 }
+.csurebgc{
+	color:#EFEFEF;
+}
 
 /*板トップの概要欄とヘッソの色*/
 table{
 	background-color:#CCFFCC;
+}
+.citatopbgc{
+	color:#CCFFCC;
 }
 
 /*板タイトル色*/
 h1{
 color:#000000;
 }
+.citatitle{
+	color:#000000;
+}
 
 /*本文の文字色*/
 dd{
+	color:#000000;
+}
+.cmoji{
 	color:#000000;
 }
 
@@ -707,21 +723,39 @@ dd{
 t{
 color:#FF0000;
 }
-
+.csuretai{
+	color:#FF0000;
+}
 /*名前の色*/
 font.name{
 	color:#228811;
 }
-
+.cnamae{
+	color:#228811;
+}
 /*リンク色*/
 a:link { color: #0000FF; }
 a:hover { color: #FF0000; }
 a:visited { color: #660099; }
+.clink{
+	color:#0000FF;
+}
+.clinktap{
+	color:#FF0000;
+}
+.clinkdone{
+	color:#660099;
+}
 
 /*設定ボックス*/
 .setting{
-	background-color: white;
+	justify-content: flex-start;
+	background-color: #C0C0C0;
 	color:black;
+}
+.input{
+ height:20px
+
 }
 a.disabled{
     pointer-events: none;
@@ -731,6 +765,7 @@ a.disabled{
 	color:#660099;
 	text-decoration: underline;
 }
+a.t{text-decoration:none;}
 
 </style>
 <div id="sstyle"></div>
@@ -749,21 +784,26 @@ let link = document.getElementById("linkname").value;
 let linktap = document.getElementById("linktapname").value;
 let linkdone = document.getElementById("linkdonename").value;
 
-sbgc = ".sbody{background-color:" + bgc + ";}";
-ssurebgc = ".threads{background-color:" + surebgc + ";}";
-sitatopbgc = "table{background-color:" + itatopbgc + ";}"
-sitatitle = "h1{color:" + itatitle + ";}";
-smoji = "dd{color:" + moji + ";}" + "dt{color:" + moji + ";}" + "td{color:" + moji + ";}";
-ssuretai = "t{color:" + suretai + ";}";
-snamae = "font.name{color:" + namae + ";}";
-slink = "a:link {color:" + link + ";}";
-slinktap = "a:hover {color:" + linktap + ";}";
-slinkdone = "a:visited {color:" + linkdone + ";}";
+sbgc = ".sbody{background-color:" + bgc + ";}" + ".cbgc{color:" + bgc + ";}"
+ssurebgc = ".threads{background-color:" + surebgc + ";}" + ".csurebgc{color:" + surebgc + ";}"
+sitatopbgc = "table{background-color:" + itatopbgc + ";}" + ".citatopbgc{color:" + itatopbgc + ";}"
+sitatitle = "h1{color:" + itatitle + ";}" + ".citatitle{color:" + itatitle + ";}"
+smoji = "dd{color:" + moji + ";}" + "dt{color:" + moji + ";}" + "td{color:" + moji + ";}" + ".cmoji{color:" + moji + ";}" 
+ssuretai = "t{color:" + suretai + ";}" + ".csuretai{color:" + suretai + ";}"
+snamae = "font.name{color:" + namae + ";}" + ".cnamae{color:" + namae + ";}"
+slink = "a:link {color:" + link + ";}" + ".clink{color:" + link + ";}"
+slinktap = "a:hover {color:" + linktap + ";}" + ".clinktap{color:" + linktap + ";}"
+slinkdone = "a:visited {color:" + linkdone + ";}" + ".clinkdone {color:" + linkdone + ";}"+ ".visit {color:" + linkdone + ";}"
 
 sss = "<style>" + sbgc + ssurebgc + sitatopbgc + sitatitle + smoji + ssuretai +  snamae + slink + slinktap + slinkdone + "</style>"
 
 const sstyle = document.getElementById('sstyle');
 sstyle.innerHTML = sss;
+
+const elm = document.getElementById("bn")
+let cbn = document.getElementById("bannername").value;
+elm.src = cbn;
+
 
 }
 

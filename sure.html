@@ -1,18 +1,18 @@
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
 <div class="setting">
-背景色:<span class="bgc-output">#FFFFFF</span>　<input type="color" id="bgcname" list="" value="#FFFFFF"><br>
-スレッド背景色:<span class="surebgc-output">#EFEFEF</span>　<input type="color" id="surebgcname" list="" value="#EFEFEF"><br>
-板トップ背景色(PC):<span class="itatopbgc-output">#CCFFCC</span>　<input type="color" id="itatopbgcname" list="" value="#CCFFCC"><br>
-板タイトル色:<span class="itatitle-output">#000000</span>　<input type="color" id="itatitlename" list="" value="#000000"><br>
-文字色:<span class="moji-output">#000000</span>　<input type="color" id="mojiname" list="" value="#000000"><br>
-スレタイ色:<span class="suretai-output">#FF0000</span>　<input type="color" id="suretainame" list="" value="#FF0000"><br>
-名前の色:<span class="namae-output">#228811</span>　<input type="color" id="namaename" list="" value="#228811"><br>
-リンク色:<span class="link-output">#0000FF</span>　<input type="color" id="linkname" list="" value="#0000FF"><br>
-リンク色(タップ時):<span class="linktap-output">#FF0000</span>　<input type="color" id="linktapname" list="" value="#FF0000"><br>
-リンク色(訪問済):<span class="linkdone-output">#660099</span>　<input type="color" id="linkdonename" list="" value="#660099"><br>
+<s><div class="cbgc">背景色(※設定の必要なし):</div></s><input type="text" id="bgcname"><br><br>
+<div class="csurebgc">スレッド背景色:</div><input type="text" id="surebgcname"><br><br>
+<s><div class="citatopbgc">板トップ背景色(PC)(※設定の必要なし):</div></s><input type="text" id="itatopbgcname"><br><br>
+<s><div class="citatitle">板タイトル色(※設定の必要なし):</div></s><input type="text" id="itatitlename"><br><br>
+<div class="cmoji">文字色:</div><input type="text" id="mojiname"><br><br>
+<div class="csuretai">スレタイ色:</div><input type="text" id="suretainame"><br><br>
+<div class="cnamae">名前の色:</div><input type="text" id="namaename"><br><br>
+<div class="clink">リンク色:</div><input type="text" id="linkname"><br><br>
+<div class="clinktap">リンク色(タップ時):</div><input type="text" id="linktapname"><br><br>
+<div class="clinkdone">リンク色(訪問済):</div><input type="text" id="linkdonename"><br>
 <br>
-<input type="button" value="適用" onclick="change()"></a>
+<input type="button" value="適用" onclick="change()"></a><br>
 <br>
 
 <hr>
@@ -631,31 +631,61 @@ padding-top:5px;
 .sbody{
 	background-color:#EFEFEF;
 }
+.csurebgc{	
+color:#EFEFEF;	
+}
 
 /*本文の文字色*/
 dd{
 	color:#000000;
 }
-
+.cmoji{	
+color:#000000;	
+}
 /*スレタイ色*/
 h1{
 color:#FF0000;
+}
+.csuretai{	
+color:#FF0000;	
 }
 
 /*名前の色*/
 font.name{
 	color:#228811;
 }
-
+.cnamae{	
+color:#228811;	
+}
 /*リンク色*/
 a:link { color: #0000FF; }
 a:hover { color: #FF0000; }
 a:visited { color: #660099; }
 
+.clink{
+	color:#0000FF;
+}
+.clinktap{
+	color:#FF0000;
+}
+.clinkdone{
+	color:#660099;
+}
+
+/*設定ボックス*/
 .setting{
-	background-color: white;
+	justify-content: flex-start;
+	background-color: #C0C0C0;
 	color:black;
 }
+.input{
+ height:20px
+
+}
+a.disabled{
+    pointer-events: none;
+}
+
 
 .ankaTo {
     background: #eef;
@@ -691,13 +721,13 @@ let link = document.getElementById("linkname").value;
 let linktap = document.getElementById("linktapname").value;
 let linkdone = document.getElementById("linkdonename").value;
 
-ssurebgc = ".sbody{background-color:" + surebgc + ";}";
-smoji = "dd{color:" + moji + ";}" + "dt{color:" + moji + ";}" + "td{color:" + moji + ";}" + ".headline-tools{color:" + moji + ";}";
-ssuretai = "h1{color:" + suretai + ";}";
-snamae = "font.name{color:" + namae + ";}";
-slink = "a:link {color:" + link + ";}";
-slinktap = "a:hover {color:" + linktap + ";}";
-slinkdone = "a:visited {color:" + linkdone + ";}" + "a.disabled{pointer-events: none;" + linkdone + "};";
+ssurebgc = ".sbody{background-color:" + surebgc + ";}" + ".csurebgc{color:" + surebgc + ";}"
+smoji = "dd{color:" + moji + ";}" + "dt{color:" + moji + ";}" + "td{color:" + moji + ";}" + ".headline-tools{color:" + moji + ";}" + ".cmoji{color:" + moji + ";}" 
+ssuretai = "h1{color:" + suretai + ";}" + ".csuretai{color:" + suretai + ";}"
+snamae = "font.name{color:" + namae + ";}" + ".cnamae{color:" + namae + ";}"
+slink = "a:link {color:" + link + ";}" + ".clink{color:" + link + ";}"
+slinktap = "a:hover {color:" + linktap + ";}" + ".clinktap{color:" + linktap + ";}"
+slinkdone = "a:visited {color:" + linkdone + ";}" + "a.disabled{pointer-events: none;" + linkdone + "};" + ".clinkdone {color:" + linkdone + ";}"+ ".visit {color:" + linkdone + ";}" + ".clinkdone {color:" + linkdone + ";}"
 
 sss = "<style>" + ssurebgc  + smoji + ssuretai +  snamae + slink + slinktap + slinkdone + "</style>"
 
