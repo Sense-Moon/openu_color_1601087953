@@ -1,0 +1,760 @@
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+<div class="setting">
+背景色:<span class="bgc-output">#FFFFFF</span>　<input type="color" id="bgcname" list="" value="#FFFFFF"><br>
+スレッド背景色:<span class="surebgc-output">#EFEFEF</span>　<input type="color" id="surebgcname" list="" value="#EFEFEF"><br>
+板トップ背景色(PC):<span class="itatopbgc-output">#CCFFCC</span>　<input type="color" id="itatopbgcname" list="" value="#CCFFCC"><br>
+板タイトル色:<span class="itatitle-output">#000000</span>　<input type="color" id="itatitlename" list="" value="#000000"><br>
+文字色:<span class="moji-output">#000000</span>　<input type="color" id="mojiname" list="" value="#000000"><br>
+スレタイ色:<span class="suretai-output">#FF0000</span>　<input type="color" id="suretainame" list="" value="#FF0000"><br>
+名前の色:<span class="namae-output">#228811</span>　<input type="color" id="namaename" list="" value="#228811"><br>
+リンク色:<span class="link-output">#0000FF</span>　<input type="color" id="linkname" list="" value="#0000FF"><br>
+リンク色(タップ時):<span class="linktap-output">#FF0000</span>　<input type="color" id="linktapname" list="" value="#FF0000"><br>
+リンク色(訪問済):<span class="linkdone-output">#660099</span>　<input type="color" id="linkdonename" list="" value="#660099"><br>
+<br>
+<input type="button" value="適用" onclick="change()"></a>
+<br>
+
+<hr>
+
+</div>
+<body class="sbody" >
+<a href="#2" class="disabled">LINK前確認用</a><br>
+<style>
+.jconfirm-box{width:350px}
+</style>
+</head><body class="valus" text="#000000" link="#0000FF" alink="#FF0000" vlink="#660099" bgcolor="#EFEFEF"><style>#kome:focus{outline: 0px white dashed;}</style><input type="hidden" id="is_valus_after" value="0">
+<style>
+
+
+.tuhobox {
+	z-index:10000;
+	overflow: hidden;
+	position: fixed;
+	top:0px; right:0px;
+	margin: 0;
+	padding: 2px;
+	font-size:9pt;
+	background-color: #FFFFFF;
+	border:1pt solid #999999;
+}
+
+._u{
+margin:1px;
+background:rgba(240,240,240,.9);
+font-size:9pt;
+padding:3px;
+max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;display:inline-block;
+ vertical-align: top;
+}
+
+
+/* 前を読むボタン */
+.prev_bt{width:200px;
+	height:22px;
+	margin:5px;
+	border:0.1px solid rgba(0,0,0,.2);
+	font-size:10pt;
+	background:rgba(0,0,0,.1);display:inline-block;border-radius:5px;
+	padding:2px 30px
+}
+
+
+
+.ignore i{font-size:9pt;color:rgba(200,200,200,.8)}
+
+.hd{margin-bottom:3px}
+
+.form_fix{
+
+	position:-webkit-sticky;position: sticky; bottom:0px;
+	
+}
+
+</style>
+<style>
+.syo{
+	max-width: 250px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.kokoku{margin:10px}
+
+.paypay a{text-decoration:none;font-size:8pt;}
+.paypay > span{margin-left:2px;display:inline-block;font-size:8pt;background:#ff5555;color:white;padding:2px;border-radius:4px;cursor:pointer;line-height:8px}
+
+</style>
+<style>
+
+.cel{
+	width:50px;
+}
+
+.table-tool > .t_tool{
+	padding:3px;
+	cursor:pointer;
+	user-select: none;
+}
+
+.t_tool_selected{
+	background:yellow
+}
+
+
+.tt_table_wrap_over{max-width:300px;max-height:300px;overflow:scroll;
+padding:20px;
+background-color: #ECECEC;
+background-image: -webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, #F9F9F9), color-stop(.25, transparent),color-stop(.5, transparent), color-stop(.5, #F9F9F9),color-stop(.75, #F9F9F9), color-stop(.75, transparent),to(transparent));
+
+
+}
+
+.tt_div{display:inline-block;position:relative;cursor:pointer}
+
+.read_table{
+white-space: nowrap;border:0px ; border-spacing:0px;margin:3px; border-collapse: collapse;max-width:360px;overflow-x:scroll}
+.read_table th{background:#ccc}
+.read_table th,.read_table td{padding:3px;border:0.1px solid rgba(0,0,0,.1)}
+.tsource{word-break: break-all;background:#ccc;display:inline-block;padding:5px;font-size:8pt;
+max-width:300px;max-height:200px;overflow:scroll;}
+.tsource_wrap{display:none}
+.view_tsource{color:#999;font-size:10pt;margin:5px;display:inline-block;cursor:pointer;user-select: none;}
+
+.dot_bg{
+background-color: #ECECEC;
+background-image: -webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, #F9F9F9), color-stop(.25, transparent),color-stop(.5, transparent), color-stop(.5, #F9F9F9),color-stop(.75, #F9F9F9), color-stop(.75, transparent),to(transparent));
+
+}
+
+</style>
+<style>
+
+
+.ptd{
+	min-width:10px;
+	height:15px;
+	user-select: none;
+}
+.preview_table{
+	cursor:pointer;
+	user-select: none;
+}
+
+</style>
+
+
+
+<style>
+.main_fixed {
+	position: fixed;
+	width: '100%';
+	left: 8px;
+	margin-right:8px;
+	user-select: none;
+	-webkit-user-select: none;
+}
+</style>
+
+<div style="padding:5px;margin:5px;background:#ffffff;display:none" class="tuhobox">
+<div id="tuhoWindow">
+<div style="background:#99CC99;padding:3px;text-align:left">削除依頼フォーム
+<div style="display:inline-block"><a href="" style="padding:3px;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);color:black;background:white" class="closeTuhoWindow">閉</a></div>
+</div>
+
+</td></tr><tr><td colspan="2">
+</td></tr></tbody></table>
+</form></div>
+</div>
+<div style="padding-bottom:5px;line-height:16pt">
+<div class="thread-box-links">
+<br>
+<font size="2" color="#666666">​​​TESTER</font><br>
+<a href="#"><i class="fas fa-home"></i>板に戻る</a>&nbsp;
+<a href="#">全部</a>&nbsp;
+<a href="#">最新50</a>&nbsp;
+
+<a rel="nofollow" target="_blank" href="#">まとめる</a>
+&nbsp;|&nbsp;
+<a href="#">設定</a> |
+<a href="#">履歴</a>
+<br>
+<a>前</a> <a>次</a>&nbsp;
+<a href="#">1-</a>
+<div>
+<a href="#">画像一覧</a>
+<div style="display:inline-block;background:#ccc;padding:3px;margin-left:10px;border-radius:2px">
+<form action="#" style="margin:0">
+<input style="width:150px" name="q" placeholder="キーワード入力" value="">
+<input type="submit" value="スレ内検索">
+</form>
+</div>
+</div>
+</div>
+</div>
+<hr style="background-color:#888;color:#888;border-width:0;height:1px;position:relative">
+<div style="text-align:right;float:right">
+<table style="background:#DDD;padding:3px"><tbody><tr><td>
+<input type="button" value="削除依頼" id="tuhoButton">
+</td></tr></tbody></table>
+</div>
+<h1 id="t" style="font-size:larger;margin:0px;">
+COLOR＿TESTER
+</h1>
+<div style="clear:both;">
+
+</div>
+
+<style>
+ol{margin:0px;padding:0px}
+</style>
+
+<ol>
+<div class="thread">
+<dl val="1" :="" ""="">
+<dt class="idKR01 mesg hd " res="1"><a class="num" val="1" >1 ：<font color="#228811" class="name"><b>名無し</b></font></a>：23/09/20(水) 22:16:30 <span val="KR01" class="_id"><a class="id" rel="nofollow" val="KR01" >ID:KR01</a><a ><font size="2" color="red">主</font></a></span><div class="idcount">1</div> <a class="ignore" val="KR01"><i class="fas fa-times"></i></a>
+</dt><dd class="idKR01 mesg body nusi_message" num="1"><span class="ankaTo">カラーテスト<br>
+</span></dd>
+<ares num="1"><div class="aresdiv"><a class="aresa" val="1" style="background-color:white;color:blue"><span class="aresspan"><font size="2"><div width="12" height="12"  <count>1</count><font class="plus" color="red">+<plus>1</plus></font></font></span></a></div></ares>
+
+</dl>
+<dl val="2" class="hide" style="display: block;">
+<dt uid="KR01" class="idKR01 mesg hd" res="2"><a class="num" val="2">2：</a><font color="#228811" class="name"><b>名無し</b></font>：23/09/20(水) 22:16:41 <span class="_id" val="KR01">ID:<a rel="nofollow" class="id">KR01</a></span><div class="idcount">2</div><a class="is_nusi"><font size="2" color="red">主</font></a> <a class="ignore" val="KR01"><i class="fas fa-times"></i></a>
+</dt><dd class="idKR01 mesg body"><span class="ankaFrom"><kome num="2"><a class="_ank ank">&gt;&gt;1</a><br>安価テスト<br>
+</kome>
+</span></dd>
+<ares num="2"></ares>
+</dl><dl val="3" class="hide" style="display: block;">
+<dt uid="KR01" class="idKR01 mesg hd" res="3"><a class="num" val="3">3：</a><font color="#228811" class="name"><b>名無し</b></font>：23/09/20(水) 23:04:07 <span class="_id" val="KR01">ID:<a rel="nofollow" class="id">KR01</a></span><a class="is_nusi" ><font size="2" color="red">主</font></a> <a class="ignore" val="KR01" ><i class="fas fa-times"></i></a>
+</dt><dd class="idKR01 mesg body"><kome num="3">TEST<br>
+</kome>
+</dd>
+<ares num="3"></ares>
+</dl></div>
+</ol>
+
+</center>
+<a name="_preForm"></a>
+<div id="new_res"></div>
+<a id="new_res_end" ></a>
+<span class="new_alert_link_normal_position">
+<div id="new_alert_link" style="text-align:center;padding:2px;height:28px;display:none">
+</div>
+</span>
+
+
+<hr class="res_end_line">
+<nav class="threadNavOuter">
+<div style="padding:5px" id="threadFunction">
+<a name="form"></a>
+<div class="history_bar" style="display:inline-block;vertical-align:top;">
+<a href="#">板に戻る</a> | <a href="#">履歴に戻る</a> |
+&nbsp;<a>前</a> <a>次</a>&nbsp;
+<a href="#">全部</a>&nbsp;
+<a href="#">最新10</a>&nbsp;
+&nbsp;|&nbsp;
+</div>
+</div></nav>
+<hr>
+<style>
+.form_fix{
+background:rgba(230,230,230);border:0.1px solid rgba(0,0,0,.2);border-radius:2px;
+}
+</style>
+<a class="normalFormPosition"></a>
+<div class="formDivDefault"></div>
+<div class="formset" style="display:inline-block;;padding:4px;">
+<div class="fotmset_inner" style="position:relative">
+
+<span class="floatCloseButton" style="position:absolute;
+border:0px;
+display:none;
+right:-15px;top:-15px;
+font-weight:normal;
+font-size:20pt;
+"><a style="color:rgba(100,100,100,.6);"><i style="background:white;border-radius:20px" class="fas fa-times-circle"></i></a></span>
+<div id="formdiv">
+<form id="form1" style="border-radius:4px;margin:0px;padding:3px;font-size:10pt;background:rgba(100,100,100,.1)">
+<style>.ankbold{font-weight:bold}</style>
+<div class="ankaview_div" style="max-width: 550px;">
+<div class="ankaShake">
+<div class="ankaview" style="font-size: 9pt; border-radius: 4px; margin-bottom: 5px; padding: 2px; background: white; line-height: 16pt; display: block;">
+<a style="color:black;margin-left:4px" href="#" class="delank"><i class="fas fa-times-circle delAnkIcon"></i></a>&nbsp;
+<span style="font-size:9pt;background:red;color:white;border-radius:1px;padding:1px;margin-right:5px;">安価<ankanum>1</ankanum>件</span>
+<font size="2" class="AnkaList"><span><a class="_ank closeOther vw ankbold" href="#">2</a></span></font>
+</div>
+</div>
+</div>
+
+<div style="display:inline-block;">
+<style>
+
+#submit_button {
+  border-radius:2px;
+  cursor:pointer;
+  border: 1px solid #ccc;
+  background: #f1e767;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(top, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+#submit_button:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
+}
+
+</style>
+
+<input style="width:60px" tabindex="-1" placeholder="名前" id="FROM" class="CLEAN input_text" name="FROM" size="10" value="">
+<input style="width:50px" tabindex="-1" placeholder="ｺﾏﾝﾄﾞ" autocomplete="off" id="mail" class="cmd_box CLEAN input_text" name="mail" size="10" value="">
+<label class="noselect" title="スレをsageで投稿"><input tabindex="-1" type="checkbox" class="sage" id="sage" name="sage"><i class="fas fa-arrow-down"></i></label>
+<label class="CLEAN noselect" title="忍法帖を表示"><input tabindex="-1" type="checkbox" class="ninja" id="ninja" name="ninja">忍</label>
+<label style="display:none" class="aa_btn" title="投稿時に!AAつける"><input tabindex="-1" type="checkbox" class="aa">AA</label>
+<div id="wCloseButtonDiv" style="display:none;float:right"><a id="wcloseButton" href="#">戻す↓</a></div>
+<div>
+<div>
+<div class="form_menu">
+<select class="admin_command" style="background:yellow">
+<option value="">スレ主コマンド</option>
+<option value="!ai
+">!ai AI機能</option>
+<option value="!aku">!aku アク禁</option>
+<option value="!kaijo">!kaijo 解除</option>
+<option value="!add
+">!add 追記</option>
+<option value="!バルサン">!バルサン 荒らし撃退</option>
+<option value="!sub">!sub 副設定</option>
+<option value="!nopic">!nopic 画像禁止</option>
+<option value="!ngk">!ngk コテハン禁止</option>
+<option value="!cap">!cap ▲固定名を付与</option>
+<option value="!reset">!reset ▲副＆akuを全解除</option>
+<option value="!age">!age レスを固定age</option>
+<option value="!voicha">ぬとらじ開始（参加自由）</option>
+<option value="!voicha:1">ぬとらじ開始（主のみ）</option>
+<option value="!将棋
+">!将棋 ▲か副と将棋できる</option>
+</select>
+<label><input type="checkbox" name="no_nusi"><font size="2"><font color="red">主</font>非表示</font></label>
+</div>
+<textarea id="MESSAGE" rows="4" cols="60" name="MESSAGE" style="height: 78px; font-size: 12pt;"></textarea>
+<span class="MESSAGE_BOTTOM">&nbsp;</span>
+</div>
+<div id="map"></div>
+</div>
+<div style="display:inline-block;vertical-align:top;margin-right:10px;width:60%">
+<input id="submit_button" type="button" name="submit" style="font-size:13pt;border-radius:2px;padding:10px;width:100%" class="fas submit_bt" value=" 投稿する">
+</div>
+<map_up_preview></map_up_preview>
+<gazo_up_after>
+<clean_mode_after>
+
+<div style="margin:2px 0 5px 0" class="button-div">
+<gazo_up_before>
+<div title="画像うｐ機能" class="gazo_up" style="display:inline-block;vertical-align:middle;background:#ddd;border-radius:1px">
+<div style="display:inline-block">
+<input class="far noselect btgr image_bt" style="margin-top:3px;height:20px;font-size:10pt" value="" type="button">
+<input accept="image/*" class="fileSelect" type="file" multiple="multiple" style="display:none"></div></div>
+</gazo_up_before>
+
+<span class="koe_btn" style="display:none">
+<div title="録音機能" class="noselect mic_div" style="display:inline-block;vertical-align:top;background:#ddd;padding:3px;border-radius:1px">
+<div>
+<span>
+<button class="btgr" style="font-size:9pt" id="recordButton"><i style="font-size:16px" class="fas fa-microphone-alt"></i></button><div style="display: none; border-radius: 3px; padding: 1px; background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204);" class="voice_del_link"></div>
+</span></div>
+</div>
+</span>
+
+<span class="map_btn" >
+<div title="地図" class="CLEAN noselect" style="display:inline-block;vertical-align:top;background:#ddd;padding:3px;border-radius:1px;">
+<input class="btgr fas" style="height:20px;font-size:9pt" id="map_bt" type="button" value="">
+</div>
+</span>
+
+<div title="投票機能" class="CLEAN noselect" style="display:inline-block;vertical-align:top;background:#ddd;padding:3px;border-radius:1px">
+<input type="button" class="btgr fas" value="" style="height:20px;font-size:9pt" id="ankButton">
+</div>
+
+<div title="お絵描き機能" class="CLEAN noselect" style="display:inline-block;vertical-align:top;background:#ddd;padding:3px;border-radius:1px;">
+<input class="btgr fas" style="height:20px;font-size:10pt" type="button" id="oekakiMode" value="">
+</div>
+
+
+
+<div class="fav_aa"></div>
+<div class="upload_picinfo" style="display: none; background: rgb(221, 221, 221); padding: 3px;"></div>
+<div id="controls"></div>
+<div id="formats"></div>
+
+<div>
+<font size="2" color="#666666">
+
+</font>
+</div>
+</div>
+<input checked="" type="checkbox" id="ajaxSubmit" style="display:none">
+
+<div style="color:#444;width:100px" title="オプション表示/非表示 " class="settingButton">▼ｵﾌﾟｼｮﾝ</div>
+<style>
+
+.options{
+	line-height:25pt;
+	margin-left:6px
+}
+
+.options label{
+	width:74px;
+	display:inline-block;
+}
+
+</style>
+<div class="option_wrapper" style="z-index:100000000000;position:fixed;top:0px;left:0px;width:100%;height:100%;background:rgba(0,0,0,.2);display:none">
+<div class="option_inner" style="
+
+display:flex;
+width:100%;
+height:100%;
+justify-content: center;
+-webkit-justify-content: center;
+flex-direction: column;
+align-items: center;  
+-webkit-align-items: center;
+
+">
+
+<div style="color:black;background:#EEE;border:0.1px solid #000;position:relative;box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .3)">
+</div>
+</div>
+</div>
+</div>
+</clean_mode_after></gazo_up_after></div></form>
+</div>
+</div>
+<div class="up_down_div" style="position: fixed; bottom: 220px; right: 10px; top: 466px;">
+<div style="position:relative">
+<div style="font-size:30pt;position:absolute;top:-30px;right:0px">
+<a href="##" class="up" style="display:none;color:rgba(0,0,0,.3)"><i class="fas fa-chevron-circle-up"></i></a>
+</div>
+<div style="font-size:30pt;position:absolute;top:+30px;right:0px">
+<a href="##" class="down" style="color: rgba(0, 0, 0, 0.3); display: none;"><i class="fas fa-chevron-circle-down"></i></a>
+</div>
+</div>
+</div>
+
+
+<div>
+<style>
+.hide{display:none}
+</style>
+
+<span id="icon_oekaki" class="icon_oekaki" style="display:none">
+<div class="icon_oekaki_inner noselect hide" style="position:fixed;top:100px;right:10px;cursor:pointer;display:inline-block;background:white;border:1px solid #ccc;padding:10px;width:25px;text-align:center;border-radius:80px">
+<i class="fas fa-paint-brush"></i>
+</div>
+</span>
+
+
+</div>
+
+<div id="ignore_div"></div>
+
+<footer>
+
+<div align="center">
+<div style="display:inline-block;text-align:left">
+<div class="headline_div">
+<div>
+<div style="margin-bottom:5px;" class="headline-info">
+<div class="headline_bar">
+<div style="color:black;display:inline-block" class="headline-tools"><span class="headline_tab headlineZoomBt" style="display: none;"><a href="#"><i class="fas fa-angle-double-down"></i></a></span><span class="headline_tab headlineSmallBt" ><a href="#"><i class="fas fa-angle-double-up"></i></a></span><span class="headline_tab sub_only headlineCommentSelected"><font size="2"><i class="fas fa-comment"></i></font></span><span class="headline_tab headlineStopBt"><font size="2"><i class="fas fa-pause"></i></font></span><span class="headline_tab headlineReplayBt" style="display: none;"><font size="2"><i class="fas fa-play"></i></font></span><span class="headline_tab headline-search-bt"><i style="font-size:9pt" class="fas fa-search"></i></span><div style="position:relative;display:inline-block;vertical-align:top"><input class="headline_que" style="width:300px;font-size:12pt;padding-right:15px;display:none;margin-left:5px" placeholder="ﾍﾄﾞﾗｲﾝ検索"><a style="display:none" class="del_headline_query_button" href="#"><i style="cursor:pointer;font-size:10pt;color:rgba(0,0,0,.5);position:absolute;right:8px;top:5px" class="fas fa-times"></i></a></div></div>
+
+</div>
+<div id="headline" class="hl_scroll" style="height: 400px; overflow-y: scroll;" inview="inview"><section id="h1695215790" class="hdr h1695215790 r1695215790_3" ><div class="hhead hhead-bg"><div style="position:relative"><div class="hd_cl_icon _iki_zero">&nbsp;</div><a href="#" sub="COLOR＿TESTER" bbskey="h1695215790" class="hrbatu batu ignore_headline" style="display: none;"><span style="margin-right:5px;display:inline-block;;cursor:pointer"><i class="far fa-times-circle"></i></span></a><a class="hllink" bid="h1695215790" resnum="3" href="#"><span class="hkeika hkeika_sub subkeika"><font size="1">0秒</font></span><span class="hrnum">+3</span><span class="hsub">COLOR＿TESTER</span><span class="hrresnum" color="#555">(3)</span></a></div></div><div class="headlineMessage"><a style="text-decoration:none;color:black" class="hllink" bid="h1695215790" resnum="3"  href="#">TEST</a></div></section><section id="h1695215790" class="hdr h1695215790 r1695215790_2" ><div class="hhead hhead-bg"><div style="position:relative"><div class="hd_cl_icon _iki_zero">&nbsp;</div><a href="#" sub="COLOR＿TESTER" bbskey="h1695215790" class="hrbatu batu ignore_headline" style="display: none;"><span style="margin-right:5px;display:inline-block;;cursor:pointer"><i class="far fa-times-circle"></i></span></a><a class="hllink" bid="h1695215790" resnum="2" href="#"><span class="hkeika hkeika_sub subkeika" >47<font size="1">分</font></span><span class="hrnum">+2</span><span class="hsub">COLOR＿TESTER</span><span class="hrresnum" color="#555">(2)</span></a></div></div><div class="headlineMessage"><a style="text-decoration:none;color:black" class="hllink" bid="h1695215790" resnum="2"  href="#">&gt;&gt;1
+安価テスト</a></div></section><section id="h1695215790" class="hdr h1695215790 r1695215790_1" ><div class="hhead hhead-bg"><div style="position:relative"><div class="hd_cl_icon _iki_zero">&nbsp;</div><a href="#" sub="COLOR＿TESTER" bbskey="h1695215790" class="hrbatu batu ignore_headline" style="display: none;"><span style="margin-right:5px;display:inline-block;;cursor:pointer"><i class="far fa-times-circle"></i></span></a><a class="hllink" bid="h1695215790" resnum="1"  href="#"><span class="hkeika hkeika_sub subkeika" time="1695215790">47<font size="1">分</font></span><span class="hrnum">+1</span><span class="hsub">COLOR＿TESTER</span><span class="hrresnum" color="#555">(1)</span></a></div></div><div class="headlineMessage"><a style="text-decoration:none;color:black" class="hllink" bid="h1695215790" resnum="1" href="#">カラーテスト</a></div></section></div>
+</div>
+
+<style>
+
+/* headline */
+#headline{
+padding:3px;
+padding-top:5px;
+padding-bottom:5px;
+margin-bottom:10px;
+font-size:10pt;overflow-y:scroll;
+background:#F5F5F5;
+border-radius:0px;
+border:0.1px solid rgba(0,0,0,.5);
+}
+
+
+._iki_zero{
+	background:#bababa
+}
+
+._iki_normal_headline{
+	background:#FFFFFF
+}
+
+._iki_normal{
+	background:#FFFFFF
+}
+
+._iki_middle{
+	background:#ffffcc
+}
+
+._iki_high{
+	background:#ffbbbb
+}
+
+._iki_super{
+	background:#ff6666;
+}
+.hd_cl_icon{display:inline-block;margin-right:1px}
+
+
+.ftag{width:50px}
+.rnum{float:right;margin-right:2px;font-size:9pt}
+.hres{display:inline-block}
+
+.hkeika{font-size:7pt;color:#AAA;text-align:center;display:inline-block;;white-space:nowrap;}
+
+.hsub{margin-left:3px;text-overflow:ellipsis; overflow: hidden;white-space: nowrap;max-width:70%;display:inline-block
+;vertical-align:top;
+}
+
+.hrnum{font-size:8pt;text-align:center;white-space:nowrap;color:red;display:inline-block;}
+.hrresnum{font-size:8pt;text-align:center;white-space:nowrap;display:inline-block;vertical-align:top}
+
+.hrbatu{text-align:center;width:10px;white-space:nowrap;color:red;display:inline-block;}
+
+.htime{color:darkgreen}
+.hide{display:none}
+.hdr{direction: ltr;padding:2px;vertical-align:middle}
+
+.menu{line-height:30px}
+.bg{background:#ddd}
+.bg1{background:eee}
+.clear{clear:both}
+
+.hdr{padding-bottom:1px;padding-top:1px}
+.hrresnum{display:inline-block;}
+.hrbatu{display:inline-block}
+
+.ignore_headline{color:red;text-decoration:none}
+
+.headline_tab{margin-left:2px;padding:2px;background:#f0F0f0;border:1px solid #ddd;border-radius:5px;
+padding-right:15px;padding-left:15px;text-align:center;
+
+
+}
+.headline_tab a{color:black;text-decoration:none;font-size:10pt}
+.headlineSetting{display:none;background:#ddd;width:100%;position:fixed;top:0;left:0;z-index:1000;border-bottom:1px solid black}
+.headlineSettingContent{padding:5px}
+
+.headlineCommentSelected {background:yellow}
+
+.headlineMessage{
+word-break : break-all;
+	margin-left:5px;
+
+	font-size:9pt;
+  position: relative;
+  padding: 1px;
+	padding-right:4px;
+	padding-left:4px;
+
+	padding-top:5px;
+	padding-bottom:5px;
+
+	display:inline-block;
+	min-width:40px;
+	max-width:95%;
+
+	text-overflow:ellipsis; 
+	overflow: hidden;
+	white-space: nowrap
+	
+
+}
+
+
+
+.hhead-bg{
+	background: #E5E5E5;
+	padding-left:2px;
+	border-radius:5px 0 0 0;
+
+}
+
+
+
+.hdr{border-bottom:0.1px solid rgba(100,100,100,.1)}
+
+
+
+</style>
+
+
+<style>
+
+#headline{height:200px;width:550px ; border: 0px}
+.headline_bar{
+padding-top:5px;
+    padding: 8px 10px 8px 28px;
+    text-align:right;
+}
+</style>
+<center>
+<div class="copyrights" style="color:rgba(0,0,0,.5)">
+<a href="#" style="color:#999">ダミーテキスト</a>：ダミーテキスト
+</div>
+</center>
+</footer>
+
+<style>.clipSeleced{background:white} .video_fix{border-radius:2px;padding:2px;position: fixed;z-index:5}</style><style>.reading{background:yellow}</style><style>.syoicon{margin:3px;user-select: none;border:1px solid #DDD;border-radius:3px;color:#555;cursor:pointer;background:#ddd;width:200px;text-align:center;font-size:10pt;padding:2px}</style><style>.audio{cursor:pointer}.audio.playing{background-image: url("")}</style><style>.spin { animation: spin 2s linear infinite;}@keyframes spin {0% {transform: rotate(0deg);} 100% {transform: rotate(360deg);}}</style><div style="display:none" id="youtube_player"><iframe id="player_iframe" src="" frameborder="0" allowfullscreen=""></iframe><div style="text-align:center;margin-top:3px"><input id="overlay_closeButton" type="button" value="Close"></div></div><div id="overlay" style="display:none"></div><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="#"><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details" style="min-width:300px"><span class="lb-caption"></span><span class="lb-number"></span><span style="clear: left;display: block;" class="lb-save"></span><span class="lb-korabo"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div><img src="" id="jqThumbnail" style="object-fit: cover;;width:300px;height:300px;border-radius:4px;opacity:.9;position:absolute;display:none"><div class="set_alert" style="z-index:100000000000;position:fixed;top:0px;left:0px;width:100%"></div><style>.idcount{border:0.1px solid rgba(0,0,0,.1);padding:0.5px;background:white;display:none;margin-left:3px;color:#AAA;display:inline-block;font-size:8pt;border-radius:2px}</style><style>.res_fix{opacity:.9;border-radius:2px;padding:2px;background:#FFE;position: -webkit-sticky;position: sticky;top: 0;z-index:5}</style><style>.aaa_preview_window{cursor:pointer;user-select: none;position:fixed;text-align:left;display:inline-block;padding:5px;background:#F8F8F8;;box-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 -2px 3px -1px #f5f5f5 inset; transition: .3s;}.preview_box{background:#eee}</style><style>.aa-fav-div{margin:2px;background:#dddddd;padding:4px;display:inline-block}</style><style>.aa_regist{user-select: none;font-family:sans-serif;font-size:9pt;background:#F8F8F8;padding:2px;display:inline-block}._aa{width:80;padding:5px;user-select: none}</style><link rel="stylesheet" type="text/css"><style>.aaa_div{display:inline-block;cursor:pointer}.aaa{position:relative}.aaa_view{position:absolute}.over_aaa{background:#dddddd}.aaa_hide{display:none;background:#ddd}</style><style>.ufull{border:1px solid #ddd;padding:3px;background:#F8F8F8;border-radius:2px;margin:2px;border-radius:5px}.urlinfo{min-width:450px;max-width:60%;font-size:10pt;color:#777;display:inline-block;padding:2px;;padding-right:2px}.uim{border-radius:3px;width:30px;height:30px;object-fit:cover;padding-right:2px;}.ufullim{width:90px;height:90px;object-fit:cover;float:left;margin-right:5px;;border-radius:5px}.udetail{margin-top:3px;user-select: none;-moz-user-select: none;-ms-user-select: none;line-height:12pt;font-size:9pt}.ut{text-overflow:ellipsis;}.utt{font-size:9pt}.ns{user-select: none;-moz-user-select: none;-ms-user-select: none ; font-size:11pt}</style><style>.sakura_checker{position:relative;} .scheker{opacity:.8;box-shadow: 0 2px 2px rgb(0 0 0 / 20%);border-radius:2px;padding:2px;background:#e5374f;color:white;position:absolute;margin-left:5px;display:inline-block;font-size:8pt} .scheker:before{ content:'';font-size:0px;;vertical-align:top;display:inline-block;position:relative;right:6px;top:0px;width: 0;  height: 0;  border-top: 5px solid transparent;  border-right: 5px solid #e5374f;  border-bottom: 5px solid transparent;}  </style><div class="header_alert" style="z-index:10000;width:100%;position:fixed;top:0px;left:0px"><ngalert></ngalert></div><style>hit{background:yellow}</style><div id="ninja_popup"><p></p></div><style>.iobtton{user-select: none;position:relative;font-size:9pt;border-radius:3px;margin:1px;margin-left:3px;background:rgba(255,255,255,.5);padding:5px;color:black;display:inline-block;vertical-align:top;width:12px;text-align:center;border:0.1px solid rgba(0,0,0,.1)}.iobtton_sel{background:white;box-shadow:0 2px 2px 0 rgba(0, 0, 0, .1)}.iok,.ino{cursor:pointer;font-size:8pt}.iok{color:red} .ino{color:rgba(0,0,0,.5)} .ignore_check_over{background:rgba(200,200,200,.2)}.ignore_check{display:inline-block;position:absolute}</style><style>.bottomDiv{position:fixed}</style><style>.openpic{display:none}</style><style>klog div{margin-bottom:3.5px}</style><style>.noselect{user-select: none;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;}</style><div id="komediv" style="z-index:20;position:fixed; position:fixed; bottom:0px; right:0px;font-size:9pt "><div style="display:inline-block;width:220px;"><div id="kmessage" style="display:none;border:1px solid #222;font-size:9pt;background:#88cc88;color:black;padding:3px"></div><div id="klog_view" style="font-size: 9pt; line-height: 12pt; color: white; word-break: break-all; text-overflow: ellipsis; width: 215px; height: 250px; padding: 2px; border: 1px solid rgb(128, 128, 128); overflow: hidden scroll; opacity: 0.75; background: rgb(17, 17, 17); display: none;"></div><div id="kheader" style="font-size:9pt;background:#030;color:white;padding:3px">ニコニコ風チャット機能『kome』<div style="float:right"><a id="khide" href="#"><img border="0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAPElEQVQokWNgYGD4TyJm+E8sQNGATyOyGhQbsGlCl8dwEj4DcPoB5kG8fiBbA0lOIsnTZAUrIQDXQAoGAMRaioQ+ITiQAAAAAElFTkSuQmCC" width="12" height="12"></a></div></div><div style="background:#ddffdd;padding:3px;font-size:9pt;border:1px solid #333"><div id="kmain" style="display:none"><div align="right" style="padding-bottom:5px;font-size:9pt"><a target="_blank" href="http://open2ch.net/dev/kome.cgi">ヘッドライン</a>&nbsp;|&nbsp;<a style="color:red" class="knew" href="##">新に戻す</a></div><select id="room"><option value="all">全共通(all)</option><option value="1695203153">板別(1695203153)</option><option selected="" value="1695203153:1695215790">見てるスレ限定</option></select>&nbsp;<img src="">&nbsp;<span id="ninzu">-</span><font size="1">人</font><div class="noselect"><input id="ksound" type="checkbox"><label for="ksound">音</label><input id="kimgok" type="checkbox"><label for="kimgok">画</label><input id="kvoice" type="checkbox"><label for="kvoice">声</label><input type="checkbox" id="knagasi" checked="checked"><label for="knagasi">流</label><div style="float:right"><input type="button" value="NG" id="ngreset" style="display: none;"></div></div><div class="noselect"><div style="padding:1px;font-size:8pt;color:#999" id="komeLength">-</div></div><div class="noselect" id="kcanvas_view" style="text-align:center;margin:5px 0 4px 0;display:none"><canvas style="border:1px solid #DDD" width="200" height="80" id="kcanvas" drawtimes="0"></canvas></div><form id="komeform" style="margin: 0px;"><table bgcolor="white" width="100%" style="border:1px solid #ddd" id="textTable"><tbody><tr><td><input id="kome" size="20" autocomplete="off" style="border:0px" disabled=""><div style="float:right"><span style="cursor:pointer;padding:3px;margin-top:5px"><img title="画像アップロード" width="16" height="16" id="kfileButton" src=""></span><input type="submit" id="ksubmitButton" value="送"></div></td></tr></tbody></table><div style="float:left" class="noselect"><label><input id="kcanvas_check" type="checkbox">お絵描き</label><input id="kOekakiReset" type="button" value="消" style="display: none;"><input id="kOekakiSubmit" type="button" value="送" style="display: none;"></div><input style="display:none" accept="image/*" id="kfile" autocomplete="off" type="file"></form></div><div style="padding:5px" class="noselect">&nbsp;<div style="float:right"><input type="checkbox" id="kconnect"><label class="noselect" for="kconnect">接続する</label></div></div></div></div></div><div style="position: fixed; top: 2px; padding: 2px; margin: 2px; z-index: 1; left: 641px;" id="nama_box" class="free"><div style="vertical-align:top;padding:3px" id="slinks" class="noselect"><a class="slinks selected" label="配信を観る" href="##" id="sview"><i class="nama-icon far fa-play-circle" style="color: yellow;"></i><div style="text-align:center;display:inline-block;width:0px;font-size:9pt" class="namaStatus"> <font size="1"></font></div></a><div style="display:inline-block"><span class="nama_options_button" style="cursor: pointer; border: 0.1px solid rgba(100, 100, 100, 0.1); background: rgb(221, 221, 221); font-size: 9pt; border-radius: 2px; text-align: center; padding: 2px; margin-right: 5px;"><i class="fas fa-ellipsis-v"></i></span><div style="display:none" class="nama_options"><a class="nama_btns slinks" label="配信用キー" href="##" id="spub"><i class="fas fa-info-circle"></i></a><a class="nama_btns slinks" label="移動：ボタンをﾄﾞﾗｯｸﾞ" style="cursor:move" href="##" id="smove"><i class="fas fa-arrows-alt"></i></a><a class="nama_btns slinks sresize" label="サイズ変更" style="cursor:pointer" href="##"><i class="fas fa-arrows-alt-h"></i></a><br><input id="szoom_val" type="range" value="320" min="100" max="1000" style="z-index:100000;position:absolute;display:none;width:100px"></div></div><div style="font-size: 11pt; color: rgb(153, 153, 153); padding: 5px; display: none;" id="smessage"></div><div class="nama_video_waku"><video width="320" height="180" class="dummy_video" style="display:none;background:rgba(0,0,0,.8)"></video></div><div class="nama_video_waku" id="swf"></div></div><style>.nama_popup:before{content:'';position: absolute;bottom:-10px;left:10px;  margin-left: -5px;  border: 5px solid transparent;  border-top: 5px solid #7494C0;  z-index: 0;}.nama_popup{z-index:10000;font-size:9pt;background:#7494C0;color:white;padding:1px;;border-radius:2px;padding-left:10px;padding-right:10px}</style><style>.sresize.selected{background:red} .nama_video_waku{margin:5px}</style><style>#smove.move{background:red}.slinks{margin:1px;background:rgba(0,0,0,.8);text-decoration:none;border-radius:10px;padding:1px;font-size:9pt;padding-left:5px;padding-right:5px;color:white}</style></div><iframe scrolling="no" frameborder="0" allowtransparency="true" src="" title="Twitter settings iframe" style="display: none;"></iframe><style>.kidoku{margin-top:5px;border-radius:1px;padding:0px;font-size:7pt;background:#999;color:white;display:inline-block}
+.hsub_bold{font-weight:bold}</style><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src=""></iframe>
+
+</div>
+</div>
+<style>
+
+/*スレッド背景色*/
+.sbody{
+	background-color:#EFEFEF;
+}
+
+/*本文の文字色*/
+dd{
+	color:#000000;
+}
+
+/*スレタイ色*/
+h1{
+color:#FF0000;
+}
+
+/*名前の色*/
+font.name{
+	color:#228811;
+}
+
+/*リンク色*/
+a:link { color: #0000FF; }
+a:hover { color: #FF0000; }
+a:visited { color: #660099; }
+
+.setting{
+	background-color: white;
+	color:black;
+}
+
+.ankaTo {
+    background: #eef;
+    border-radius: 2px;
+    display: inline;
+}
+
+.ankaFrom {
+    background: #fee;
+    border-radius: 2px;
+    display: inline;
+}
+a.disabled{
+    pointer-events: none;
+}
+
+</style>
+
+<div id="sstyle"></div>
+
+<script>
+function change() {
+let bgc = document.getElementById("bgcname").value;
+let surebgc = document.getElementById("surebgcname").value;
+let itatopbgc = document.getElementById("itatopbgcname").value;
+let itatitle = document.getElementById("itatitlename").value;
+let moji= document.getElementById("mojiname").value;
+let suretai = document.getElementById("suretainame").value;
+let namae = document.getElementById("namaename").value;
+let link = document.getElementById("linkname").value;
+let linktap = document.getElementById("linktapname").value;
+let linkdone = document.getElementById("linkdonename").value;
+
+ssurebgc = ".sbody{background-color:" + surebgc + ";}";
+smoji = "dd{color:" + moji + ";}" + "dt{color:" + moji + ";}" + "td{color:" + moji + ";}" + ".headline-tools{color:" + moji + ";}";
+ssuretai = "h1{color:" + suretai + ";}";
+snamae = "font.name{color:" + namae + ";}";
+slink = "a:link {color:" + link + ";}";
+slinktap = "a:hover {color:" + linktap + ";}";
+slinkdone = "a:visited {color:" + linkdone + ";}";
+
+sss = "<style>" + ssurebgc  + smoji + ssuretai +  snamae + slink + slinktap + slinkdone + "</style>"
+
+const sstyle = document.getElementById('sstyle');
+sstyle.innerHTML = sss;
+
+}
+ window.onload = () => {
+    let bgcname = document.getElementById("bgcname");
+    let objbgc = document.getElementsByClassName("bgc-output")[0];
+    bgcname.addEventListener("change", (event) => {    
+      objbgc.textContent = event.target.value;
+    });
+    let surebgcname = document.getElementById("surebgcname");
+    let objsurebgc = document.getElementsByClassName("surebgc-output")[0];
+    surebgcname.addEventListener("change", (event) => {    
+      objsurebgc.textContent = event.target.value;
+    });
+    let itatopbgcname = document.getElementById("itatopbgcname");
+    let objitatopbgc = document.getElementsByClassName("itatopbgc-output")[0];
+    itatopbgcname.addEventListener("change", (event) => {    
+      objitatopbgc.textContent = event.target.value;
+    });
+    let itatitlename = document.getElementById("itatitlename");
+	let objitatitle = document.getElementsByClassName("itatitle-output")[0];
+	itatitlename.addEventListener("change", (event) => {    
+	  objitatitle.textContent = event.target.value;
+}); 
+    let mojiname = document.getElementById("mojiname");
+    let objmoji = document.getElementsByClassName("moji-output")[0];
+    mojiname.addEventListener("change", (event) => {    
+      objmoji.textContent = event.target.value;
+    });
+    let suretainame = document.getElementById("suretainame");
+    let objsuretai = document.getElementsByClassName("suretai-output")[0];
+    suretainame.addEventListener("change", (event) => {    
+      objsuretai.textContent = event.target.value;
+    });
+    let namaename = document.getElementById("namaename");
+    let objnamae = document.getElementsByClassName("namae-output")[0];
+    namaename.addEventListener("change", (event) => {    
+      objnamae.textContent = event.target.value;
+    });
+    let linkname = document.getElementById("linkname");
+    let objlink = document.getElementsByClassName("link-output")[0];
+    linkname.addEventListener("change", (event) => {    
+      objlink.textContent = event.target.value;
+    });
+    let linktapname = document.getElementById("linktapname");
+    let objlinktap = document.getElementsByClassName("linktap-output")[0];
+    linktapname.addEventListener("change", (event) => {    
+      objlinktap.textContent = event.target.value;
+    });
+    let linkdonename = document.getElementById("linkdonename");
+    let objlinkdone = document.getElementsByClassName("linkdone-output")[0];
+    linkdonename.addEventListener("change", (event) => {    
+      objlinkdone.textContent = event.target.value;
+    });
+  }
+
+</script>
+</body>
